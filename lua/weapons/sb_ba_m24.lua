@@ -5,7 +5,7 @@ SWEP.Spawnable				= true
 --
 -- Description
 --
-SWEP.PrintName				= "MP7"
+SWEP.PrintName				= "M24"
 SWEP.Category				= "Suburb: Bat Arsenal"
 SWEP.Description			= [[9x19mm submachine gun]]
 SWEP.Slot					= 2
