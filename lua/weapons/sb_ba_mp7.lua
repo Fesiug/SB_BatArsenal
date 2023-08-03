@@ -18,7 +18,7 @@ SWEP.WorldModel				= "models/weapons/arccw/c_ba_smg_mp7.mdl"
 SWEP.VMWMClone				= { Pos = Vector(), Ang = Angle(), Size = Vector() }
 SWEP.ViewModelFOV			= 72
 
-SWEP.DefaultBodygroups = "0 1 1 1 1"
+SWEP.DefaultBodygroups = "0 0 0 0 0"
 SWEP.DefaultSkin = 0
 
 SWEP.ActivePose = {
@@ -26,8 +26,8 @@ SWEP.ActivePose = {
 	Ang = Angle( 0, 0, 0 )
 }
 SWEP.IronsightPose = {
-    Pos = Vector(-3.52, -2, 0.8),
-    Ang = Angle(0, 0, -2),
+    Pos = Vector(-3.53, -5, 0.2),
+    Ang = Angle(0, -0.1, -2),
 	MidPos = Vector( -1.1, 3, -0.8 ),
 	MidAng = Angle( 0, 0, -6 ),
 	ViewModelFOV = 65,
@@ -149,7 +149,7 @@ SWEP.Animations				= {
 		ShellEjectTime = 0,
 	},
 	["reload"]	= {
-		Source = "reload_20",
+		Source = "reload_40",
 		Time = 1.7,
 		Events = {
 		},
@@ -157,7 +157,39 @@ SWEP.Animations				= {
 		LoadIn = 1,
 	},
 	["reload_empty"] = {
+		Source = "reload_40_empty",
+		Time = 1.9,
+		Events = {
+		},
+		ReloadingTime = 1.5,
+		LoadIn = 1,
+	},
+	["reload_20"]	= {
+		Source = "reload_20",
+		Time = 1.7,
+		Events = {
+		},
+		ReloadingTime = 1.4,
+		LoadIn = 1,
+	},
+	["reload_20_empty"] = {
 		Source = "reload_20_empty",
+		Time = 1.9,
+		Events = {
+		},
+		ReloadingTime = 1.5,
+		LoadIn = 1,
+	},
+	["reload_60"]	= {
+		Source = "reload_60",
+		Time = 1.7,
+		Events = {
+		},
+		ReloadingTime = 1.4,
+		LoadIn = 1,
+	},
+	["reload_60_empty"] = {
+		Source = "reload_60_empty",
 		Time = 1.9,
 		Events = {
 		},
@@ -168,7 +200,7 @@ SWEP.Animations				= {
 
 SWEP.Attachments = {
 	{
-		Name = "Rear Sight",
+		Name = "Sight",
 		SortOrder = 1.0,
 		Slot = QT("optic_short", "optic_hybrid", "optic_medium", "ba_mp7_piron"),
 
@@ -176,4 +208,65 @@ SWEP.Attachments = {
 		Pos = Vector(0.13, 2, 1.94),
 		Ang = Angle(180, 180, 0)
 	},
+	{
+		Name = "Barrel",
+		SortOrder = 2.0,
+		Slot = "ba_mp7_barrel",
+	},
+	{
+		Name = "Stock",
+		SortOrder = 2.1,
+		Slot = "ba_mp7_stock",
+	},
+	{
+		Name = "Magazine",
+		SortOrder = 2.2,
+		Slot = "ba_mp7_mag",
+	},
 }
+
+SWEP.Elements = {
+	["ba_mp7_piron"] = {
+		Bodygroups = { [4] = 1 },
+		Override_IronsightPose = {
+			Pos = Vector(-3.52, -2, 0.8),
+			Ang = Angle(0, 0, -2),
+			MidPos = Vector( -1.1, 3, -0.8 ),
+			MidAng = Angle( 0, 0, -6 ),
+			ViewModelFOV = 65,
+			Magnification = 1.2,
+		}
+	},
+	["ba_mp7_stock_collapsed"] = {
+		Bodygroups = { [3] = 1 },
+	},
+	["ba_mp7_stock_fixed"] = {
+		Bodygroups = { [3] = 2 },
+	},
+	["ba_mp7_stock_none"] = {
+		Bodygroups = { [3] = 3 },
+	},
+	["ba_mp7_mag_20"] = {
+		Bodygroups = { [2] = 1 },
+	},
+	["ba_mp7_mag_60"] = {
+		Bodygroups = { [2] = 2 },
+	},
+	["ba_mp7_barrel_short"] = {
+		Bodygroups = { [1] = 1 },
+	},
+	["ba_mp7_barrel_long"] = {
+		Bodygroups = { [1] = 2 },
+	},
+}
+
+function SWEP:TranslateAnimation( data )
+	local ae = self.ActivatedElements
+	if data.anim == "reload" then
+		if ae["ba_mp7_mag_20"] then
+			data.anim = "reload_20"
+		elseif ae["ba_mp7_mag_60"] then
+			data.anim = "reload_60"
+		end
+	end
+end
