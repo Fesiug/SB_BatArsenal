@@ -57,29 +57,27 @@ SWEP.CameraCorrection					= Angle( 0, -90, -90 )
 --
 -- Functionality
 --
-SWEP.Primary.Ammo			= "pistol"
-SWEP.Primary.ClipSize		= 20
+SWEP.Primary.Ammo			= "SniperPenetratedRound"
+SWEP.Primary.ClipSize		= 5
 SWEP.ChamberSize			= 1
-SWEP.Delay					= ( 60 / 1000 )
+SWEP.Delay					= ( 60 / 300 )
 
 SWEP.ShotgunReloading		= true
 SWEP.ManualAction			= 1
+SWEP.ReloadRemovesNeedCycle = true
 
 SWEP.Firemodes				= {
-	{
-		Mode = math.huge,
-	},
 	{
 		Mode = 1,
 	}
 }
 SWEP.SwayCorrection = 0.35
 
-SWEP.Accuracy				= 0.6
+SWEP.Accuracy				= 0
 
-SWEP.Dispersion				= 1.5
-SWEP.Dispersion_Air			= 0.8
-SWEP.Dispersion_Move		= 0.8
+SWEP.Dispersion				= 4.5
+SWEP.Dispersion_Air			= 1
+SWEP.Dispersion_Move		= 1
 SWEP.Dispersion_Crouch		= 0.75
 SWEP.Dispersion_Sights		= 0
 
@@ -137,37 +135,37 @@ SWEP.Animations				= {
 	},
 	["fire"]	= {
 		Source = "fire",
-		ShellEjectTime = 0,
-	},
-	["fire_empty"] = {
-		Source = "fire_empty",
-		ShellEjectTime = 0,
+		CycleDelayTime = 0.2,
 	},
 	["fire_sight"]	= {
 		Source = "fire_iron",
-		ShellEjectTime = 0,
-	},
-	["fire_sight_empty"]	= {
-		Source = "fire_iron_empty",
-		ShellEjectTime = 0,
+		CycleDelayTime = 0.2,
 	},
 	["cycle"]	= {
 		Source = "chamber",
 		Events = {
 		},
-		ShellEjectTime = 0.1,
-		CycleDelayTime = 0.3,
+		ShellEjectTime = 0.4,
+		CycleDelayTime = 0.75,
 	},
 	["sgreload_start"] = {
 		Source = "reload_start",
-		Time = 0.5,
+		Time = 0.8,
 		Events = {
 		},
-		ShotgunReloadingTime = 0.25,
+		ShotgunReloadingTime = 0.5,
+	},
+	["sgreload_start_empty"] = {
+		Source = "reload_start",
+		Time = 0.8,
+		Events = {
+		},
+		ShellEjectTime = 0.2,
+		ShotgunReloadingTime = 0.5,
 	},
 	["sgreload_insert"] = {
 		Source = "reload_insert",
-		Time = 0.6,
+		Time = 0.8,
 		Events = {
 		},
 		LoadIn = 0.2,
@@ -176,7 +174,7 @@ SWEP.Animations				= {
 	},
 	["sgreload_finish"] = {
 		Source = "reload_end",
-		Time = 0.5,
+		Time = 0.9,
 		Events = {
 		},
 		ReloadingTime = 0,
