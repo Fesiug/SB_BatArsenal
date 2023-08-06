@@ -206,7 +206,6 @@ SWEP.Attachments = {
 		ActivateElements = {"ba_mp7_piron"},
 
 		Bone = "mp7_root",
-		Pos = Vector(0.13, 2, 1.94),
 		Pos = Vector(-0.13, -2, 1.94),
 		Ang = Angle(180, 180, 0)
 	},
