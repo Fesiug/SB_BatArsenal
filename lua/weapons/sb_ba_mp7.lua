@@ -203,9 +203,11 @@ SWEP.Attachments = {
 		Name = "Sight",
 		SortOrder = 1.0,
 		Slot = QT("optic_short", "optic_hybrid", "optic_medium", "ba_mp7_piron"),
+		ActivateElements = {"ba_mp7_piron"},
 
 		Bone = "mp7_root",
 		Pos = Vector(0.13, 2, 1.94),
+		Pos = Vector(-0.13, -2, 1.94),
 		Ang = Angle(180, 180, 0)
 	},
 	{
